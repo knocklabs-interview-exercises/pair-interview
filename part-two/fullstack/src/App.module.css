@@ -1,0 +1,76 @@
+.wrapper {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.container {
+  height: calc(100% - 56px);
+  background-image: radial-gradient(
+    circle at 2px 2px,
+    #ededed 2px,
+    transparent 0
+  );
+  background-size: 20px 20px;
+  background-color: #fafafa;
+  display: flex;
+}
+
+.sidepanel {
+  width: 512px;
+  height: 100%;
+  background-color: #fff;
+  border-left: 1px solid #ccc;
+  padding: 16px 32px;
+  position: relative;
+}
+
+.sidepanelBlank {
+  font-size: 14px;
+  text-align: center;
+}
+
+.workflow {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.workflowContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 0;
+}
+
+.workflowItem {
+  position: relative;
+  padding-bottom: 32px;
+}
+
+.workflowItemLine {
+  width: 2px;
+  height: 32px;
+  background-color: #ccc;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  margin-left: -1px;
+}
+
+.blankCard {
+  background-color: #f2f2f2;
+  border: 1px dashed #ccc;
+  width: 280px;
+  height: 56px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.blankCard span {
+  font-size: 14px;
+  color: #666;
+}

@@ -1,0 +1,16 @@
+.container {
+  border-bottom: 1px solid #ccc;
+  background-color: #fff;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+}
+
+.messageContainer {
+  margin-left: auto;
+}
+
+.message {
+  font-size: 14px;
+  color: #222;
+}

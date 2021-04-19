@@ -1,0 +1,15 @@
+.name,
+.subtitle {
+  margin: 0;
+}
+
+.subtitle {
+  margin-bottom: 20px;
+}
+
+.sidepanelClose {
+  background-color: transparent;
+  border: 1px solid #ccc;
+  position: absolute;
+  right: 32px;
+}
