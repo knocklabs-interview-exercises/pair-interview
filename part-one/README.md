@@ -17,7 +17,6 @@ a downstream delivery provider to send the message.
 - We want to create 2 different delivery providers: an `email` provider, and an `sms` provider
 - Each delivery provider should call a specific delivery endpoint (see API Documentation.md) and
   format the request as necessary
-- We should consider failure handling as part of the design in the delivery service
 
 ## Part 3: Stitching it together
 
