@@ -15,7 +15,7 @@ const deliverSms = (job) => {
 const promises = JSON.parse(fs.readFileSync('jobs.json')).jobs
     .reduce((acc, v) => acc.some(j => v.id === j.id) ? acc : [...acc, v], [])
     .sort((a, b) => a.timestamp - b.timestamp)
-    .reduce((acc, v) => acc.length < 100 ? [...acc, v] : acc, [])
+    .slice(0, 100)
     .map(v => v.type === 'email' ? deliverEmail(v) : deliverSms(v))
 
 const lodashPromises = _(JSON.parse(fs.readFileSync('jobs.json')).jobs)
