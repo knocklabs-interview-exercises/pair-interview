@@ -1,13 +1,9 @@
 import styles from "./WorkflowItem.module.css";
-import data from "../data";
+import getMessageType from "../utils/getMessageType";
 
-function findItem(id) {
-  return data.find((item) => item.id === id);
-}
+const WorkflowItem = ({ itemId, isSelected, onSelect, item }) => {
 
-const WorkflowItem = ({ itemId, isSelected, onSelect }) => {
-  const item = findItem(itemId);
-
+  let message = getMessageType(item.type, item.settings)
   return (
     <div
       className={`${styles.container} ${
@@ -18,9 +14,7 @@ const WorkflowItem = ({ itemId, isSelected, onSelect }) => {
       <div className={styles.content}>
         <h3 className={styles.name}>{item.name}</h3>
         <p className={styles.subtitle}>
-          {item.type === "delay"
-            ? `Delay for ${item.settings.delay_for.value} seconds`
-            : `Send to ${item.settings.provider_name}`}
+          {message}
         </p>
       </div>
       <div className={`${styles.icon} ${styles[`icon__${item.type}`]}`} />
