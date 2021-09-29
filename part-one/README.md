@@ -10,7 +10,7 @@ a downstream delivery provider to send the message.
 
 - The `jobs.json` file contains all of the jobs to be processed
 - The jobs may not be in order, but will need to be processed in order
-- There may be duplicate jobs that should be removed
+- There may be duplicate jobs that should be removed before they can be processed
 
 ## Part 2: Building our delivery services
 
@@ -27,6 +27,5 @@ a downstream delivery provider to send the message.
 
 ## Part 4: Extending our design
 
-- We want to add checkpointing into our delivery queue so that jobs that have been processed are
-  marked as done. On the startup of our program we should skip any completed jobs and continue
-  processing from the last job (if any are left)
+- We want to add a checkpointing mechanism into our design so that jobs that have been processed are
+  recorded, such that we can terminate our program, restart it, and execute any remaining jobs.

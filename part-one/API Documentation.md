@@ -4,7 +4,7 @@
 
 **Endpoint**
 
-https://knock-delivery-api.onrender.com/service/email
+POST https://knock-delivery-api.onrender.com/service/email
 
 **Authentication**
 
@@ -15,8 +15,6 @@ https://knock-delivery-api.onrender.com/service/email
 ```json
 {
   "to": "to@example.com",
-  "cc": "cc@example.com",
-  "bcc": "bcc@example.com",
   "body": "The message"
 }
 ```
@@ -47,7 +45,7 @@ Status code: `422`
 
 **Endpoint**
 
-https://knock-delivery-api.onrender.com/service/sms
+POST https://knock-delivery-api.onrender.com/service/sms
 
 **Authentication**
 
