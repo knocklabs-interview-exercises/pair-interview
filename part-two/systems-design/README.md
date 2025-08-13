@@ -14,26 +14,26 @@ The delivery service should:
 
 - Process each notification at most once.
 - Call the appropropriate delivery provider for the notification.
-- Handle retries of messages, with exponential backoffs.
-- Record an *audit trail* delivery logs for all calls made to downstream services. This trail should be eventually be available to customers.
-- Handle the result of the notification success or failure and pass this result to other services.
+- Handle retries of messages, with exponential backoffs: 8 retries over 30 minutes.
+- Record an *audit trail* delivery logs for all calls made to downstream services.
+  - This trail should be eventually be available to customers: this means customers should be able to look at delivery logs in the Knock dashboard.
+  - We only need to retain delivery logs for 90 days; after that, they can be deleted or archived.
 
 ## Service objectives
 
-- *Start* delivery of messages within 1s, that is, messages don't "sit" in an unprocessed state for more than 1s.
+- The first delivery attempt for a message—that is, the first request to the remote provider—should happen no longer than 5s *after the notification request was received*.
 - Process 10,000 notifications per second, but be able to absorb spikes up to 50,000 notifications per second.
 - Ordering of messages is important, but not essential (it's OK if multiple emails from the same customer arrive out of order)—a best-effort approach is okay.
 
 ## Things to note
 
-- Our product is multi-tenanted in that we have many different customers sending many different volumes of messages (imagine one customer accounts for 60% of the peak volume).
-- There are multiple tiers of customers we should consider: Enterprise, Paid, and Free. Enterprise customers sign strict SLAs with us and account for the bulk of the volume (75%). You don't have to worry about the specifics of SLAs: it's enough to know that we'll want to give these customers "special treatment".
+- Our product is multi-tenanted. We have different customers sending different volumes of messages. Our product aligns with a sort of 80/20 rule: 20% of our customers send 80% of our messages. It could get more extreme, with a handful of customers accounting for a large percentage of those messages.
+- There are multiple tiers of customers we should consider: *Enterprise*, *Paid*, and *Free*. Enterprise customers sign strict SLAs with us and account for the bulk of the volume (75%). You don't have to worry about the specifics of SLAs: it's enough to know that we'll want to give these customers "special treatment".
 
 ## Out of scope
 
 - Designing the API ingestion or workflow service
 - Designing the configuration service
-- Designing the message logging service
 
 ## Diagramming tools
 
