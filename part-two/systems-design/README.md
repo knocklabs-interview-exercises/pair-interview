@@ -4,20 +4,20 @@ In this exercise we'll be designing a key component of Knock: our **message deli
 
 At Knock we accept customer API requests that "trigger" a defined workflow for one or more recipients, and turn them into notification messages that should be delivered to a provider using some predefined configuration.
 
-Let's assume our ingestion API and workflow execution service are already defined, and are **not** in scope for this exercise. Imagine that our workflow service is ready to "produce" well-formed notification messages that are ready to be delivered by our *delivery service*. We'll design that *delivery service* here. How messages are sent to your delivery service is up to you.
+Let's assume our *ingestion API* and *workflow execution service* are already defined, and are **not** in scope for this exercise. Imagine that these "produce" well-formed notification messages that are ready to be delivered by our *delivery service*. We'll design that *delivery service* here. How messages are sent to your delivery service is up to you.
 
 ## Service definition
 
-Our deliver service will eventually integrate with many different providers to send out across different channels. Initially we'll want to support emails, SMS, push messages, and chat providers (Slack, Discord, and Teams). Our customers provide the appropriate configuration for each provider, which we store in a "configuration service". You can assume that the delivery service can send as many requests as it wants to the configuration service, which responds instantly at any scale.
+Our delivery service will eventually integrate with many different providers to send out across different channels. Initially we'll want to support emails, SMS, push messages, and chat providers (Slack, Discord, and Teams). Our customers provide the appropriate configuration for each provider.
 
 The delivery service should:
 
-- Process each notification at most once.
-- Call the appropropriate delivery provider for the notification.
-- Handle retries of messages, with exponential backoffs: 8 retries over 30 minutes.
+- Process each notification **at most once**.
+- Call the appropriate delivery provider for the notification.
+- Handle retries of messages—we need to support multiple retries, sometimes minutes after each other.
 - Record an *audit trail* delivery logs for all calls made to downstream services.
   - This trail should be eventually be available to customers: this means customers should be able to look at delivery logs in the Knock dashboard.
-  - We only need to retain delivery logs for 90 days; after that, they can be deleted or archived.
+  - We only need to retain delivery logs for a fixed amount of time (say, 90 days); after that, they can be deleted or archived.
 
 ## Service objectives
 
