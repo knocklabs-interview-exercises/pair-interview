@@ -30,9 +30,9 @@ Status code: `200`
 }
 ```
 
-**Error Response**
+**Error Responses**
 
-Status code: `422`
+Non-2xx status plus a body that has at least these two keys:
 
 ```json
 {
@@ -56,7 +56,7 @@ POST https://knock-delivery-api.onrender.com/service/sms
 ```json
 {
   "to": "123-456-7890",
-  "message": "The message"
+  "body": "The message"
 }
 ```
 
@@ -73,7 +73,7 @@ Status code: `200`
 
 **Error Response**
 
-Status code: `422`
+Non-2xx status plus a body that has at least these two keys:
 
 ```json
 {
