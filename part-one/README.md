@@ -8,24 +8,25 @@ a downstream delivery provider to send the message.
 
 ## Part 1: Parsing message jobs
 
-- The `jobs.json` file contains all of the jobs to be processed
+- The `jobs.json` file contains all the jobs to be processed
 - The jobs may not be in order, but will need to be processed in order
 - There may be duplicate jobs that should be removed before they can be processed
 
 ## Part 2: Building our delivery services
 
-- We want to create 2 different delivery providers: an `email` provider, and an `sms` provider
-- Each delivery provider should call a specific delivery endpoint (see API Documentation.md) and
-  format the request as necessary
+- We want to create two different delivery providers: an `email` provider, and an `sms` provider
+- Each delivery provider should call a specific delivery endpoint (see [API Documentation.md](./API%20Documentation.md)) and
+format the request as necessary
+  - We don't need to perform retries if the API calls fail (which they will, sometimes)
 
 ## Part 3: Stitching it together
 
-- We want to take all of our processed jobs and execute them to the correct delivery provider
-  (email jobs should go to the `email` provider, sms jobs should go to the `sms` provider)
-- When all of the jobs have finished we want to show the total number of successful and failed jobs
-  in the batch
+- We want to take all of our processed jobs and execute them against the correct delivery provider
+(email jobs should go to the `email` provider, SMS jobs should go to the `sms` provider)
+- When all the jobs have finished we want to show the total number of successful and failed jobs
+in the batch
 
 ## Part 4: Extending our design
 
 - We want to add a checkpointing mechanism into our design so that jobs that have been processed are
-  recorded, such that we can terminate our program, restart it, and execute any remaining jobs.
+recorded, such that we can terminate our program at any time, restart it, and execute any remaining jobs.
