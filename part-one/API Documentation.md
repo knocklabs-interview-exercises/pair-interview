@@ -56,7 +56,7 @@ POST https://knock-delivery-api.onrender.com/service/sms
 ```json
 {
   "to": "123-456-7890",
-  "body": "The message"
+  "message": "The message"
 }
 ```
 
