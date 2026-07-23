@@ -33,6 +33,7 @@ flowchart TB
     Dashboard --> BFF
     BFF --> BFFDB
     API --> APIDB
+    BFF --Configuration sync--> API
     Admin -.reads across.-> BFFDB
     Admin -.reads across.-> APIDB
 ```
