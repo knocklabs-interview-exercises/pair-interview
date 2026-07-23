@@ -1,8 +1,8 @@
-# DevOps systems design exercise
+# DevOps Systems Design Exercise
 
 Today Knock runs as a single-site service inside one AWS region (US-East-2). We want to stand up a **dedicated EU-resident site** so that we can offer EU customers **data residency**. This is a discussion exercise — there's no single right answer. We want to reason through the migration and its trade-offs together.
 
-## How we run today
+## How We Run Today
 
 At a high level, here's roughly how Knock runs today. It's deliberately simplified, but close enough to reason about:
 
@@ -38,25 +38,25 @@ flowchart TB
     Admin -.reads across.-> APIDB
 ```
 
-## The exercise
+## The Exercise
 
 **How would you plan a migration to EU hosting? The key constraint is data residency.**
 
 For the purposes of this exercise, we are talking about running in a single EU region, and not supporting multi-region failover (e.g. active-active across Frankfurt and Dublin).
 
-## Success criteria
+## Success Criteria
 
 1. A functional **EU-resident Knock site** with **no dependency on US-East-2**.
 2. **Maintainable** as we iterate on both the US and EU variants of the infra — automated deployments, kept in sync as much as possible — and **legible to Knock engineering as a whole**. You will be sharing the Terraform patterns you use with the whole team, as they will need to extend whatever you propose in the future.
-3. A clear **day-two operations** story: monitoring, metrics, and observability (e.g. Datadog segmented by region), admin tooling, disaster recovery, and compliance controls & audits.
+3. A clear **day-two operations** story: observability, admin tooling, disaster recovery, and compliance controls & audits.
 
-## Out of scope
+## Out of Scope
 
 - Multi-region **failover / active-active** distribution.
 - Product-level decisions about which *features* are enabled per region (e.g. an AI/agent step that depends on a vendor unavailable in the EU).
 - Deep GDPR legal specifics — you don't need to be a compliance expert. However, point out how you will meet the key design constraints of data residency, compliance, and maintainability for you and the rest of the team on day two.
 
-## Diagramming tools
+## Diagramming Tools
 
 - [Excalidraw](https://excalidraw.com/) - free to use
 - [Figma](https://figma.com) - can send an invite
