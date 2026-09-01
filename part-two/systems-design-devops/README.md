@@ -1,6 +1,6 @@
 # DevOps Systems Design Exercise
 
-Today Knock runs as a single-site service inside one AWS region (US-East-2). We want to stand up a **dedicated EU-resident site** so that we can offer EU customers **data residency**. This is a discussion exercise — there's no single right answer. We want to reason through the migration and its trade-offs together.
+Today Knock runs as a single-site service inside one AWS region (US-East-2). We want to stand up a **dedicated EU-resident site** so that we can offer EU customers **data residency**. This is a discussion exercise — there's no single right answer. We want to reason through the exercise and its trade-offs together.
 
 ## How We Run Today
 
