@@ -1,6 +1,6 @@
 # DevOps Systems Design Exercise
 
-Today Knock runs as a single-site service inside one AWS region (US-East-2). We want to stand up a **dedicated EU-resident site** so that we can offer EU customers **data residency**. This is a discussion exercise — there's no single right answer. We want to reason through the migration and its trade-offs together.
+Today Knock runs as a single-site service inside one AWS region (US-East-2). We want to stand up a **dedicated EU-resident site** so that we can offer EU customers **data residency**. This is a discussion exercise — there's no single right answer. We want to reason through the exercise and its trade-offs together.
 
 ## How We Run Today
 
@@ -40,9 +40,9 @@ flowchart TB
 
 ## The Exercise
 
-**How would you plan a migration to EU hosting? The key constraint is data residency.**
+**How would you plan standing up a new EU site? The key constraint is data residency.**
 
-For the purposes of this exercise, we are talking about running in a single EU region, and not supporting multi-region failover (e.g. active-active across Frankfurt and Dublin).
+For the purposes of this exercise, we are talking about running in a single EU region, and not supporting multi-region failover (e.g. active-active across Frankfurt and Dublin). Knock accounts already in the US site would not move to this new region. New customers signing up for Knock could choose which site will host their account.
 
 ## Success Criteria
 
